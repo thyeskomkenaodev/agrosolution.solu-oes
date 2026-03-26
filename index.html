@@ -3,560 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>AgroSolution | Soluções Florestais</title>
-    <!-- Google Fonts + Font Awesome -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', 'Plus Jakarta Sans', sans-serif;
-            background-color: #fefef7;
-            color: #1a2e1f;
-            overflow-x: hidden;
-            scroll-behavior: smooth;
-        }
-
-        /* Animated gradient background for hero */
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        /* Reveal animations */
-        .reveal {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 0.9s cubic-bezier(0.2, 0.9, 0.3, 1.1);
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .container {
-            max-width: 1300px;
-            margin: 0 auto;
-            padding: 0 32px;
-        }
-
-        /* Header / Navbar */
-        .navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(12px);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
-            z-index: 1000;
-            padding: 16px 0;
-            transition: all 0.3s ease;
-            border-bottom: 1px solid rgba(60, 100, 40, 0.15);
-        }
-
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .logo h1 {
-            font-size: 1.9rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #1d4d1f, #3b8c3a, #6aa84f);
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
-            letter-spacing: -0.02em;
-            display: flex;
-            align-items: center;
-        }
-
-        .logo span {
-            font-size: 0.8rem;
-            font-weight: 500;
-            color: #3e6b3c;
-            display: block;
-            letter-spacing: 1px;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 38px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            font-weight: 600;
-            color: #1f3b1c;
-            transition: 0.25s;
-            font-size: 1rem;
-            position: relative;
-        }
-
-        .nav-links a:after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -6px;
-            left: 0;
-            background: #2e7d32;
-            transition: width 0.3s;
-        }
-
-        .nav-links a:hover:after {
-            width: 100%;
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            background: linear-gradient(115deg, rgba(20, 40, 15, 0.82), rgba(30, 60, 25, 0.7)), url('https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80') center/cover fixed;
-            background-size: cover;
-            display: flex;
-            align-items: center;
-            position: relative;
-            margin-top: 0;
-        }
-
-        .hero-content {
-            max-width: 800px;
-            color: white;
-            padding: 120px 0 80px;
-        }
-
-        .hero-content h1 {
-            font-size: 4rem;
-            font-weight: 800;
-            line-height: 1.2;
-            margin-bottom: 20px;
-            text-shadow: 0 4px 20px rgba(0,0,0,0.2);
-        }
-
-        .hero-accent {
-            color: #c9e4a5;
-            border-left: 4px solid #b3e55c;
-            padding-left: 20px;
-            font-size: 1.3rem;
-            font-weight: 500;
-            margin-bottom: 32px;
-        }
-
-        .btn-group {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        .btn-primary {
-            background: #2b734b;
-            border: none;
-            padding: 14px 36px;
-            font-weight: 700;
-            font-size: 1rem;
-            border-radius: 44px;
-            color: white;
-            cursor: pointer;
-            transition: 0.3s;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .btn-primary:hover {
-            background: #1f5a3c;
-            transform: translateY(-3px);
-            box-shadow: 0 18px 30px rgba(0,0,0,0.2);
-        }
-
-        .btn-outline-light {
-            background: transparent;
-            border: 2px solid white;
-            padding: 12px 32px;
-            border-radius: 44px;
-            font-weight: 600;
-            color: white;
-            transition: 0.3s;
-            backdrop-filter: blur(4px);
-        }
-
-        .btn-outline-light:hover {
-            background: white;
-            color: #1f4f2d;
-            transform: scale(1.02);
-        }
-
-        /* Sections gerais */
-        section {
-            padding: 100px 0;
-        }
-
-        .section-title {
-            font-size: 2.7rem;
-            font-weight: 800;
-            margin-bottom: 20px;
-            color: #1a3a1a;
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-sub {
-            font-size: 1.2rem;
-            color: #4a6741;
-            max-width: 700px;
-            margin-bottom: 60px;
-        }
-
-        .grid-2 {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 50px;
-            align-items: center;
-        }
-
-        .service-img {
-            border-radius: 32px;
-            overflow: hidden;
-            box-shadow: 0 25px 40px -20px rgba(0,0,0,0.25);
-            transition: transform 0.4s;
-        }
-
-        .service-img img {
-            width: 100%;
-            height: auto;
-            display: block;
-            transition: 0.5s;
-        }
-
-        .service-img:hover img {
-            transform: scale(1.02);
-        }
-
-        .feature-list {
-            list-style: none;
-        }
-
-        .feature-list li {
-            margin-bottom: 18px;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            font-size: 1.05rem;
-        }
-
-        .feature-list i {
-            color: #3c9b4c;
-            font-size: 1.5rem;
-        }
-
-        /* Cards comércios */
-        .commerce-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-            gap: 35px;
-            margin-top: 20px;
-        }
-
-        .commerce-card {
-            background: white;
-            border-radius: 36px;
-            padding: 32px 24px;
-            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
-            border: 1px solid rgba(80, 120, 60, 0.15);
-            text-align: center;
-            backdrop-filter: blur(2px);
-        }
-
-        .commerce-card:hover {
-            transform: translateY(-12px);
-            box-shadow: 0 30px 45px rgba(40, 80, 20, 0.12);
-            border-color: #b8e0a8;
-        }
-
-        .card-icon {
-            font-size: 3.2rem;
-            background: linear-gradient(145deg, #eef6e5, #d9e8cf);
-            width: 85px;
-            height: 85px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 30px;
-            margin: 0 auto 25px;
-            color: #2d6a2f;
-        }
-
-        .commerce-card h3 {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 12px;
-        }
-
-        .commerce-card p {
-            color: #3b5240;
-            margin: 15px 0;
-            line-height: 1.5;
-        }
-
-        .card-link {
-            color: #2d6a2f;
-            font-weight: 700;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            margin-top: 15px;
-            transition: 0.2s;
-        }
-
-        /* differentials */
-        .diff-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 40px;
-            margin-top: 40px;
-        }
-        .diff-item {
-            background: #f4f9ef;
-            border-radius: 48px;
-            padding: 28px 32px;
-            text-align: center;
-            flex: 1;
-            min-width: 200px;
-            transition: all 0.3s;
-            border: 1px solid #cde2c1;
-        }
-        .diff-item i {
-            font-size: 2.6rem;
-            color: #367a36;
-            margin-bottom: 15px;
-        }
-
-        /* Galeria de fotos - Operações em campo e segurança */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-            margin-top: 30px;
-        }
-        .gallery-item {
-            border-radius: 32px;
-            overflow: hidden;
-            background: #fff;
-            box-shadow: 0 20px 30px rgba(0,0,0,0.05);
-            transition: transform 0.4s ease, box-shadow 0.3s;
-            cursor: pointer;
-        }
-        .gallery-item:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 28px 38px rgba(0,0,0,0.12);
-        }
-        .gallery-img {
-            width: 100%;
-            height: 260px;
-            object-fit: cover;
-            transition: transform 0.5s;
-        }
-        .gallery-item:hover .gallery-img {
-            transform: scale(1.02);
-        }
-        .gallery-caption {
-            padding: 20px 24px 24px;
-            background: white;
-        }
-        .gallery-caption h4 {
-            font-size: 1.35rem;
-            margin-bottom: 8px;
-            color: #1f4822;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .gallery-caption p {
-            color: #47633e;
-            line-height: 1.4;
-        }
-        .badge-seg {
-            background: #eef2e9;
-            border-radius: 30px;
-            padding: 4px 12px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: #2b6e3c;
-            display: inline-block;
-        }
-        /* Contact */
-        .contact-area {
-            background: linear-gradient(110deg, #eef3e9 0%, #ffffff 100%);
-            border-radius: 60px;
-            padding: 60px 50px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 40px;
-            justify-content: space-between;
-            margin-top: 20px;
-        }
-        .contact-info {
-            flex: 1;
-        }
-        .contact-form {
-            flex: 1;
-        }
-        .contact-form input, .contact-form textarea {
-            width: 100%;
-            padding: 15px 20px;
-            margin-bottom: 20px;
-            border-radius: 40px;
-            border: 1px solid #cbdcc2;
-            font-family: inherit;
-            background: white;
-        }
-        .btn-submit {
-            background: #1e5628;
-            color: white;
-            border: none;
-            padding: 14px 32px;
-            border-radius: 40px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-        footer {
-            background: #0a1f0c;
-            color: #cddfc5;
-            padding: 50px 0 30px;
-            text-align: center;
-        }
-
-        @media (max-width: 900px) {
-            .grid-2 {
-                grid-template-columns: 1fr;
-            }
-            .hero-content h1 {
-                font-size: 2.5rem;
-            }
-            .container {
-                padding: 0 24px;
-            }
-            .nav-links {
-                gap: 18px;
-                margin-top: 12px;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            .navbar {
-                padding: 12px 0;
-            }
-            .section-title {
-                font-size: 2rem;
-            }
-            .gallery-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-        .floating-icon {
-            animation: float 3s ease-in-out infinite;
-        }
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-8px); }
-            100% { transform: translateY(0px); }
-        }
-        .badge-moto {
-            background: rgba(255,255,200,0.2);
-            backdrop-filter: blur(6px);
-            border-radius: 100px;
-            padding: 6px 18px;
-            font-size: 0.9rem;
-            display: inline-block;
-            margin-bottom: 20px;
-            font-weight: 600;
-        }
-        /* Estilos para a seção de Vídeos Otimizados */
-        .video-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 40px;
-            margin-top: 30px;
-        }
-        .video-wrapper {
-            position: relative;
-            padding-bottom: 56.25%; /* Proporção 16:9 */
-            height: 0;
-            overflow: hidden;
-            border-radius: 24px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-            background: #000; /* Fundo preto enquanto carrega */
-        }
-        .video-wrapper iframe, .video-wrapper video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: 0;
-            object-fit: cover; /* Faz o vídeo preencher todo o espaço perfeitamente */
-            border-radius: 24px; /* Garante que os cantos do vídeo fiquem redondos */
-        }
-        .video-thumb {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            cursor: pointer;
-        }
-        .play-btn {
-            position: absolute;
-            top: 50%; left: 50%;
-            transform: translate(-50%, -50%);
-            width: 80px; height: 80px;
-            background: rgba(255,255,255,0.3);
-            backdrop-filter: blur(4px);
-            border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            border: 2px solid #fff;
-            transition: all 0.3s ease;
-            z-index: 5;
-            pointer-events: none; /* Deixa o clique passar para a div pai */
-        }
-        .play-btn i {
-            color: white;
-            font-size: 2rem;
-            margin-left: 4px; /* Ajuste visual ótico */
-        }
-        .video-wrapper:hover .play-btn {
-            background: #c0392b;
-            border-color: #c0392b;
-            transform: translate(-50%, -50%) scale(1.1);
-        }
-        @media (max-width: 600px) {
-            .video-grid { grid-template-columns: 1fr; }
-        }
-    </style>
+    <title>AgroSolution | Soluções Florestais Premium</title>
+    
+    <!-- SEO & Premium Meta -->
+    <meta name="description" content="AgroSolution - Excelência em roçada semi manual mecanizada de eucalipto com tecnologia de ponta e sustentabilidade.">
+    <meta name="keywords" content="agrosolution, roçada mecanizada, eucalipto, motopodas, silvicultura, manejo florestal">
+    <meta name="author" content="AgroSolution">
+    
+    <!-- Fonts: Outfit for titles, Inter for body -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css?v=2">
 </head>
 <body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="preloader-content">
+            <div class="preloader-logo">
+                <img src="logo.png" alt="Logo">
+                <h2>AgroSolution</h2>
+            </div>
+            <div class="preloader-bar-container">
+                <div class="preloader-bar"></div>
+            </div>
+            <div class="preloader-text">Carregando Experiência...</div>
+        </div>
+    </div>
+
+    <!-- Animated Background Blobs -->
+    <div class="bg-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
 
 <header class="navbar">
     <div class="container nav-container">
         <div class="logo">
-            <h1><img src="logo.png" alt="Logo" style="height: 40px; width: 40px; object-fit: cover; border-radius: 50%; margin-right: 10px;"> AgroSolution</h1>
-            <span>Soluções Florestais</span>
+            <img src="logo.png" alt="Logo">
+            <div class="logo-text">
+                <h1>AgroSolution</h1>
+                <span>Soluções Florestais</span>
+            </div>
         </div>
         <ul class="nav-links">
             <li><a href="#home">Home</a></li>
-            <li><a href="#servico">Limpeza de Cepa</a></li>
+            <li><a href="#servico">Serviços</a></li>
             <li><a href="#operacoes">Operações</a></li>
             <li><a href="#comercios">Comércios</a></li>
             <li><a href="#contato">Contato</a></li>
@@ -568,23 +62,25 @@
     <!-- Hero -->
     <section id="home" class="hero">
         <div class="container hero-content">
-            <div class="badge-moto"><i class="fas fa-leaf"></i> +3 anos em manejo florestal</div>
-            <h1>Excelência em limpeza de cepa de eucalipto<br> com <span style="color:#c7f0a3;">moto podas</span></h1>
-            <div class="hero-accent">Tecnologia, agilidade e respeito ao meio ambiente — o novo padrão em soluções florestais.</div>
-            <div class="btn-group">
-                <a href="#servico" class="btn-primary"><i class="fas fa-tractor"></i> Conheça nosso trabalho</a>
-                <a href="#comercios" class="btn-outline-light"><i class="fas fa-store"></i> Nossos negócios</a>
+            <div class="reveal">
+                <div class="badge-moto"><i class="fas fa-leaf"></i> +3 anos em manejo florestal</div>
+                <h1>Excelência em roçada semi manual mecanizada de eucalipto com <span>moto podas</span></h1>
+                <div class="hero-accent">Tecnologia, agilidade e sustentabilidade florestal. Elevando o padrão de produtividade no campo.</div>
+                <div class="btn-group">
+                    <a href="#servico" class="btn-primary">Nossa Expertise <i class="fas fa-arrow-right"></i></a>
+                    <a href="#comercios" class="btn-outline-light">Outros Negócios</a>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Serviço principal: Desbrota de Eucalipto com Moto Podas -->
-    <section id="servico">
+    <!-- Serviço principal -->
+    <section id="servico" class="bg-pattern">
         <div class="container">
             <div class="reveal">
-                <span style="background: #e4f0db; padding: 6px 14px; border-radius: 40px; font-weight: 600;"><i class="fas fa-tree"></i> Atividade predominante</span>
-                <h2 class="section-title">Limpeza de cepa de eucalipto com moto podas de última geração</h2>
-                <p class="section-sub">Máximo rendimento, mínimo impacto. Nossa frota de motopodas profissionais garante controle de vegetação competitivo e sustentável.</p>
+                <span class="section-tag"><i class="fas fa-tree"></i> Silvicultura Premium</span>
+                <h2 class="section-title reveal-text">Roçada semi manual mecanizada de alto desempenho</h2>
+                <p class="section-sub">Unimos tecnologia de ponta e expertise técnica para entregar o melhor manejo florestal do mercado.</p>
             </div>
             <div class="grid-2">
                 <div class="reveal">
@@ -607,36 +103,36 @@
         </div>
     </section>
 
-    <!-- Diferenciais / moto podas em números -->
-    <section style="background: #f5f9f0; padding: 70px 0;">
+    <!-- Diferenciais -->
+    <section id="diferenciais" class="bg-pattern" style="border-top: 1px solid var(--glass-border);">
         <div class="container">
-            <div class="reveal" style="text-align: center;">
-                <i class="fas fa-cogs" style="font-size: 2rem; color: #427a2b;"></i>
-                <h2 class="section-title">Por que confiar na nossa operação com motopodas?</h2>
+            <div style="text-align: center;">
+                <span class="section-tag reveal"><i class="fas fa-star"></i> Diferenciais</span>
+                <h2 class="section-title reveal-text">Por que o Grupo AgroSolution?</h2>
                 <div class="diff-grid">
-                    <div class="diff-item"><i class="fas fa-clock floating-icon"></i><h3>Agilidade extrema</h3><p>Limpeza de cepa em até 3 hectares/dia por equipe</p></div>
-                    <div class="diff-item"><i class="fas fa-hand-holding-heart floating-icon"></i><h3>Baixo impacto</h3><p>Manutenção do banco de mudas nativas</p></div>
-                    <div class="diff-item"><i class="fas fa-chart-simple floating-icon"></i><h3>+98% de eficiência</h3><p>Redução de rebrota indesejada</p></div>
+                    <div class="diff-item"><i class="fas fa-bolt"></i><h3>Alta Produtividade</h3><p>Equipes treinadas para entregar grandes áreas em tempo recorde.</p></div>
+                    <div class="diff-item"><i class="fas fa-shield-check"></i><h3>Segurança Total</h3><p>Rigidês absoluta no cumprimento das normas NR-31 e uso de EPIs.</p></div>
+                    <div class="diff-item"><i class="fas fa-leaf"></i><h3>Eco-Eficiência</h3><p>Manejo consciente que preserva o ecossistema e acelera o crescimento.</p></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- NOVA SEÇÃO: GALERIA DE OPERAÇÕES EM CAMPO + SEGURANÇA -->
-    <section id="operacoes">
+    <!-- Operações em Campo -->
+    <section id="operacoes" class="bg-pattern">
         <div class="container">
             <div class="reveal" style="text-align: center;">
-                <i class="fas fa-camera-retro" style="font-size: 2rem; color: #2e7d32;"></i>
-                <h2 class="section-title">Operações em Campo & Segurança</h2>
-                <p class="section-sub">Fotos reais das nossas frentes de trabalho: limpeza de cepa mecanizada, equipes treinadas e EPIs de ponta para garantir máxima proteção e eficiência.</p>
+                <span class="section-tag"><i class="fas fa-camera"></i> Galeria de Operações</span>
+                <h2 class="section-title reveal-text">Nossas Frentes de Trabalho</h2>
+                <p class="section-sub">Transparência e rigor técnico em cada detalhe da nossa operação florestal.</p>
             </div>
             <div class="gallery-grid">
                 <!-- item 1: operação motopoda -->
                 <div class="gallery-item reveal">
                     <img class="gallery-img" src="cepa.jpg" alt="Operador utilizando motopoda em talhão de eucalipto">
                     <div class="gallery-caption">
-                        <h4>Limpeza de cepa de precisão</h4>
-                        <p>Operador especializado  realizando limpeza de cepa seletiva, garantindo o desenvolvimento do eucalipto sem danos ao solo.</p>
+                        <h4>Roçada semi manual mecanizada de precisão</h4>
+                        <p>Operador especializado realizando roçada semi manual mecanizada seletiva, garantindo o desenvolvimento do eucalipto sem danos ao solo.</p>
                         <span class="badge-seg"><i class="fas fa-hard-hat"></i> Alta performance</span>
                     </div>
                 </div>
@@ -672,13 +168,13 @@
                     <img class="gallery-img" src="supervisao2.jpg" alt="Engenheiro florestal supervisionando campo">
                     <div class="gallery-caption">
                         <h4><i class="fas fa-clipboard-list"></i> Supervisão especializada</h4>
-                        <p>Engenheiros florestais acompanham cada etapa, garantindo que a limpeza de cepa respeite critérios técnicos e ambientais rigorosos.</p>
+                        <p>Engenheiros florestais acompanham cada etapa, garantindo que a roçada semi manual mecanizada respeite critérios técnicos e ambientais rigorosos.</p>
                         <span class="badge-seg"><i class="fas fa-leaf"></i> Sustentabilidade</span>
                     </div>
                 </div>
                 <!-- item 6: resultado final área tratada -->
                 <div class="gallery-item reveal">
-                    <img class="gallery-img" src="floresta.jpg" alt="Talhão de eucalipto após limpeza de cepa com motopoda">
+                    <img class="gallery-img" src="floresta.jpg" alt="Talhão de eucalipto após roçada semi manual mecanizada com motopoda">
                     <div class="gallery-caption">
                         <h4><i class="fas fa-check-double"></i> Resultado impecável</h4>
                         <p>Áreas tratadas com alta uniformidade, reduzindo a competição por nutrientes e acelerando o crescimento do eucalipto.</p>
@@ -715,7 +211,7 @@
         <div class="container">
             <div class="reveal" style="text-align: center;">
                 <i class="fas fa-play-circle" style="font-size: 2.5rem; color: #c0392b;"></i>
-                <h2 class="section-title">Nossas Operações em Vídeo</h2>
+                <h2 class="section-title reveal-text">Nossas Operações em Vídeo</h2>
                 <p class="section-sub">Veja na prática a eficiência  e a qualidade das nossas operações. Tecnologia e agilidade em movimento.</p>
             </div>
             
@@ -739,11 +235,11 @@
     </section>
 
     <!-- Seção impacto e inovação -->
-    <section style="background: #eef3e8;">
+    <section style="background: #0a1f12; border-top: 1px solid var(--glass-border);">
         <div class="container grid-2">
             <div class="reveal">
-                <h2 class="section-title">Moto podas de alto desempenho</h2>
-                <p style="margin-bottom: 20px; font-size: 1.1rem;">Nossa operação principal une técnica moderna e sustentabilidade, realizando a limpeza de cepa em talhões de eucalipto com precisão cirúrgica, respeitando o ciclo da floresta plantada. Ideal para preparo de área, linhas de fogo e controle de competição.</p>
+                <h2 class="section-title reveal-text">Moto podas de alto desempenho</h2>
+                <p style="margin-bottom: 20px; font-size: 1.1rem;">Nossa operação principal une técnica moderna e sustentabilidade, realizando a roçada semi manual mecanizada em talhões de eucalipto com precisão cirúrgica, respeitando o ciclo da floresta plantada. Ideal para preparo de área, linhas de fogo e controle de competição.</p>
                 <ul class="feature-list">
                     <li><i class="fas fa-check-circle"></i> Controle de plantas invasoras sem herbicidas agressivos</li>
                     <li><i class="fas fa-check-circle"></i> Redução de resíduos e otimização do espaçamento</li>
@@ -756,88 +252,84 @@
         </div>
     </section>
 
-    <!-- Seção Ação Solidária -->
-    <section style="background: #fffaf0;">
+    <!-- Ação Solidária -->
+    <section style="background: #08110a; position: relative; overflow: hidden; border-top: 1px solid var(--glass-border);">
         <div class="container">
-            <div class="reveal" style="text-align: center; margin-bottom: 40px;">
-                <span style="background: #ffe0e0; color: #c0392b; padding: 6px 14px; border-radius: 40px; font-weight: 600; font-size: 0.9rem;"><i class="fas fa-heart"></i> Responsabilidade Social</span>
-                <h2 class="section-title" style="margin-top: 15px;">AgroSolution Solidária</h2>
-                <p class="section-sub">Além de cuidar das florestas, cuidamos do futuro. Nossa ação solidária levou presentes e esperança para as crianças da comunidade.</p>
+            <div class="reveal" style="text-align: center; margin-bottom: 60px;">
+                <span class="section-tag" style="background: rgba(255, 100, 100, 0.1); color: #ff6b6b !important;"><i class="fas fa-heart"></i> Responsabilidade Social</span>
+                <h2 class="section-title reveal-text">AgroSolution Solidária</h2>
+                <p class="section-sub">Acreditamos que o sucesso deve ser compartilhado. Levamos esperança e alegria para as crianças da nossa comunidade.</p>
             </div>
             <div class="grid-2">
                 <div class="reveal">
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; align-items: center;">
-                        <img src="solidario.jpg" style="width: 100%; height: 350px; object-fit: cover; border-radius: 24px; box-shadow: 0 15px 30px rgba(192, 57, 43, 0.2);" alt="Entrega de presentes">
-                        <img src="solidario2.jpg" style="width: 100%; height: 280px; object-fit: cover; border-radius: 24px; transform: translateY(30px); box-shadow: 0 15px 30px rgba(192, 57, 43, 0.2);" alt="Crianças e equipe">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                        <img src="solidario.jpg" style="width: 100%; height: 400px; object-fit: cover; border-radius: 32px; box-shadow: 0 20px 40px rgba(192, 57, 43, 0.15);" alt="Entrega de presentes">
+                        <img src="solidario2.jpg" style="width: 100%; height: 320px; object-fit: cover; border-radius: 32px; transform: translateY(40px); box-shadow: 0 20px 40px rgba(192, 57, 43, 0.15);" alt="Crianças e equipe">
                     </div>
                 </div>
-                <div class="reveal">
-                    <h3 style="font-size: 2rem; margin-bottom: 20px; color: #c0392b;">Distribuindo Sorrisos e Presentes</h3>
-                    <p style="margin-bottom: 20px; font-size: 1.1rem; line-height: 1.6;">Acreditamos que o sucesso da empresa deve ser compartilhado. Recentemente, mobilizamos nossa equipe para distribuir presentes para crianças da região, fortalecendo nosso laço com a comunidade e promovendo momentos de alegria.</p>
+                <div class="reveal" style="padding-left: 30px;">
+                    <h3 style="font-size: 2.2rem; margin-bottom: 25px; color: #c0392b; font-family: 'Outfit';">Futuro com Propósito</h3>
+                    <p style="margin-bottom: 30px; font-size: 1.15rem; line-height: 1.8;">Nossa atuação vai além dos resultados econômicos. Buscamos gerar impacto positivo real, apoiando projetos locais e promovendo o bem-estar social.</p>
                     <ul class="feature-list">
-                        <li style="color: #555;"><i class="fas fa-gift" style="color: #e74c3c;"></i> Brinquedos educativos entregues</li>
-                        <li style="color: #555;"><i class="fas fa-smile-beam" style="color: #e74c3c;"></i> Dia de lazer e recreação</li>
-                        <li style="color: #555;"><i class="fas fa-hands-helping" style="color: #e74c3c;"></i> Compromisso social ativo</li>
+                        <li><i class="fas fa-hand-holding-heart" style="color: #e74c3c !important; background: rgba(231, 76, 60, 0.1) !important;"></i> Projetos Sociais Ativos</li>
+                        <li><i class="fas fa-users-crown" style="color: #e74c3c !important; background: rgba(231, 76, 60, 0.1) !important;"></i> Apoio à Comunidade Local</li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 4 COMÉRCIOS / RAMIFICAÇÕES -->
-    <section id="comercios">
-        <div class="container">
-            <div class="reveal" style="text-align: center;">
-                <i class="fas fa-store" style="color: #2c6e2c; font-size: 2rem;"></i>
-                <h2 class="section-title">Nossas ramificações comerciais</h2>
-                <p class="section-sub">Além da limpeza de cepa, o grupo AgroSolution diversifica seus investimentos com a marca Ranch, oferecendo qualidade e experiências únicas em diversos segmentos.</p>
-            </div>
-            <div class="commerce-grid">
-                <!-- comércio 1 -->
-                <div class="commerce-card reveal">
-                    <img src="logo_coffe.jpeg" alt="Coffee Ranch" style="width: 100%; height: 220px; object-fit: cover; border-radius: 50px; margin-bottom: 25px; box-shadow: 0 15px 25px rgba(0,0,0,0.15);">
-                    <h3>Coffee Ranch</h3>
-                    <p>Cafeteria premium com grãos selecionados, ambiente acolhedor e o melhor da gastronomia para seus momentos de pausa.</p>
-                    <a href="#" class="card-link"> <i class="fas fa-arrow-right"></i></a>
-                    <br><a href="#" class="card-link">Conheça nossa história <i class="fas fa-history"></i></a>
+    <!-- Comércios (Horizontal Scroll) -->
+    <section id="comercios" class="horizontal-section">
+        <div class="horizontal-wrapper">
+            <div class="horizontal-content">
+                <div class="horizontal-header reveal">
+                    <span class="section-tag"><i class="fas fa-store"></i> Ecossistema Ranch</span>
+                    <h2 class="section-title reveal-text">Nossas Unidades de Negócio</h2>
+                    <p class="section-sub">Arraste para o lado ou role para explorar o Grupo Ranch.</p>
                 </div>
-                <!-- comércio 2 -->
-                <div class="commerce-card reveal">
-                    <img src="logo_gelato.jpeg" alt="Gelato Ranch" style="width: 100%; height: 220px; object-fit: cover; border-radius: 50px; margin-bottom: 25px; box-shadow: 0 15px 25px rgba(0,0,0,0.15);">
-                    <h3>Gelato Ranch</h3>
-                    <p>Gelatos artesanais produzidos com técnicas italianas e frutas frescas. Sabor inigualável e cremosidade única.</p>
-                    <a href="#" class="card-link"> <i class="fas fa-arrow-right"></i></a>
-                    <br><a href="#" class="card-link">Conheça nossa história <i class="fas fa-history"></i></a>
+                
+                <div class="commerce-container">
+                    <!-- comércio 1 -->
+                    <div class="commerce-card reveal">
+                        <img src="logo_coffe.jpeg" alt="Coffee Ranch">
+                        <h3>Coffee Ranch</h3>
+                        <p>Cafeteria premium com grãos selecionados e ambiente acolhedor.</p>
+                        <a href="#" class="card-link">Explorar <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <!-- comércio 2 -->
+                    <div class="commerce-card reveal">
+                        <img src="logo_gelato.jpeg" alt="Gelato Ranch">
+                        <h3>Gelato Ranch</h3>
+                        <p>Gelatos artesanais produzidos com técnicas italianas e frutas frescas.</p>
+                        <a href="#" class="card-link">Explorar <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <!-- comércio 3 -->
+                    <div class="commerce-card reveal">
+                        <img src="logo_ranch.jpeg" alt="Açaí Ranch">
+                        <h3>Açaí Ranch</h3>
+                        <p>A energia do açaí puro em diversas combinações deliciosas.</p>
+                        <a href="#" class="card-link">Explorar <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <!-- comércio 4 -->
+                    <div class="commerce-card reveal">
+                        <img src="logo_agro.jpeg" alt="Imports Ranch">
+                        <h3>Imports Ranch</h3>
+                        <p>Produtos importados exclusivos, desde bebidas finas a itens de luxo.</p>
+                        <a href="#" class="card-link">Explorar <i class="fas fa-arrow-right"></i></a>
+                    </div>
                 </div>
-                <!-- comércio 3 -->
-                <div class="commerce-card reveal">
-                    <img src="logo_ranch.jpeg" alt="Açaí Ranch" style="width: 100%; height: 220px; object-fit: cover; border-radius: 50px; margin-bottom: 25px; box-shadow: 0 15px 25px rgba(0,0,0,0.15);">
-                    <h3>Açaí Ranch</h3>
-                    <p>A energia do açaí puro em diversas combinações deliciosas. Saúde e sabor para recarregar as energias do seu dia.</p>
-                    <a href="#" class="card-link"> <i class="fas fa-arrow-right"></i></a>
-                    <br><a href="#" class="card-link">Conheça nossa história <i class="fas fa-history"></i></a>
-                </div>
-                <!-- comércio 4 -->
-                <div class="commerce-card reveal">
-                    <img src="imports.jpg" alt="Imports Ranch" style="width: 100%; height: 220px; object-fit: cover; border-radius: 50px; margin-bottom: 25px; box-shadow: 0 15px 25px rgba(0,0,0,0.15);">
-                    <h3>Imports Ranch</h3>
-                    <p>Produtos importados exclusivos, desde bebidas finas a itens de desejo mundial, trazidos especialmente para você.</p>
-                    <a href="#" class="card-link"> <i class="fas fa-arrow-right"></i></a>
-                    <br><a href="#" class="card-link">Conheça nossa história <i class="fas fa-history"></i></a>
-                </div>
-            </div>
-            <div class="reveal" style="text-align: center; margin-top: 50px;">
-                <p style="font-size: 1.1rem;"><i class="fas fa-sync-alt"></i> Sinergia completa: da limpeza de cepa ao manejo sustentável e comercialização.</p>
             </div>
         </div>
     </section>
 
-    <!-- Contato / Orçamento -->
-    <section id="contato">
+    <!-- Contato -->
+    <section id="contato" class="bg-pattern" style="border-top: 1px solid var(--glass-border);">
         <div class="container">
             <div class="reveal" style="text-align: center;">
-                <h2 class="section-title">Fale com a AgroSolution</h2>
-                <p class="section-sub">Solicite um orçamento para limpeza de cepa de eucalipto ou conheça os produtos dos nossos 4 comércios.</p>
+                <span class="section-tag"><i class="fas fa-envelope"></i> Contato</span>
+                <h2 class="section-title">Vamos conversar?</h2>
+                <p class="section-sub">Pronto para transformar sua produtividade florestal ou conhecer nossas unidades?</p>
             </div>
             <div class="contact-area reveal">
                 <div class="contact-info">
@@ -847,87 +339,67 @@
                     <div style="margin-top: 25px;">
                         <i class="fab fa-instagram" style="font-size: 1.6rem; margin-right: 15px;"></i>
                         <i class="fab fa-linkedin" style="font-size: 1.6rem; margin-right: 15px;"></i>
-                        <i class="fab fa-youtube" style="font-size: 1.6rem;"></i>
+                        <i class="fab fa-whatsapp" style="font-size: 1.6rem;"></i>
                     </div>
                 </div>
                 <div class="contact-form">
                     <input type="text" placeholder="Seu nome" id="nome">
                     <input type="email" placeholder="E-mail corporativo">
-                    <textarea rows="3" placeholder="Gostaria de um orçamento para limpeza de cepa de eucalipto ou informações sobre os comércios..."></textarea>
-                    <button class="btn-submit" onclick="alert('Mensagem encaminhada! Em breve nosso time retorna.')">Enviar mensagem <i class="fas fa-paper-plane"></i></button>
+                    <textarea rows="3" placeholder="Gostaria de um orçamento para roçada semi manual mecanizada de eucalipto ou informações sobre os comércios..."></textarea>
+                    <button class="btn-submit">Enviar mensagem <i class="fas fa-paper-plane"></i></button>
                 </div>
             </div>
         </div>
     </section>
 </main>
 
-<footer>
+<footer class="reveal">
     <div class="container">
-        <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 30px; margin-bottom: 40px; text-align: left;">
-            <div>
-                <h3 style="color: #c4e6b5;">AgroSolution</h3>
-                <p>Limpeza de cepa de eucalipto com motopodas + 4 unidades de negócio integradas.</p>
+        <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px; margin-bottom: 50px; text-align: left;">
+            <div style="max-width: 400px;">
+                <h3 style="color: var(--primary-light); font-family: 'Outfit'; font-size: 1.8rem; margin-bottom: 20px;">AgroSolution</h3>
+                <p style="line-height: 1.8;">Líder em roçada semi manual mecanizada de eucalipto com motopodas. Unindo tecnologia, agilidade e sustentabilidade no manejo florestal.</p>
             </div>
             <div>
-                <strong>Comércios</strong><br>
-                Coffee Ranch | Gelato Ranch | Açaí Ranch | Imports Ranch
+                <h4 style="color: white; margin-bottom: 20px;">Comércios do Grupo</h4>
+                <ul style="list-style: none; line-height: 2;">
+                    <li>Coffee Ranch</li>
+                    <li>Gelato Ranch</li>
+                    <li>Açaí Ranch</li>
+                    <li>Imports Ranch</li>
+                </ul>
             </div>
             <div>
-                <strong>Links rápidos</strong><br>
-                <a href="#servico" style="color:#bddbaa; text-decoration: none;">Limpeza de Cepa</a><br>
-                <a href="#operacoes" style="color:#bddbaa; text-decoration: none;">Operações em campo</a><br>
-                <a href="#comercios" style="color:#bddbaa; text-decoration: none;">Nossos negócios</a>
+                <h4 style="color: white; margin-bottom: 20px;">Links Rápidos</h4>
+                <ul style="list-style: none; line-height: 2;">
+                    <li><a href="#home" style="color: inherit; text-decoration: none;">Início</a></li>
+                    <li><a href="#servico" style="color: inherit; text-decoration: none;">Serviços</a></li>
+                    <li><a href="#comercios" style="color: inherit; text-decoration: none;">Comércios</a></li>
+                    <li><a href="#contato" style="color: inherit; text-decoration: none;">Contato</a></li>
+                </ul>
             </div>
         </div>
-        <p>© 2026 AgroSolution Soluções Florestais – Inovação em manejo florestal e ramificações comerciais. <i class="fas fa-leaf"></i></p>
+        <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 30px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
+            <p>© 2026 AgroSolution Soluções Florestais. Todos os direitos reservados. <i class="fas fa-leaf" style="color: var(--primary-light);"></i></p>
+            <div style="display: flex; gap: 20px; font-size: 1.2rem;">
+                <i class="fab fa-instagram"></i>
+                <i class="fab fa-linkedin"></i>
+                <i class="fab fa-whatsapp"></i>
+            </div>
+        </div>
     </div>
 </footer>
 
-<script>
-    // Scroll reveal animation using Intersection Observer
-    const reveals = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('active');
-            }
-        });
-    }, { threshold: 0.15, rootMargin: "0px 0px -40px 0px" });
-    reveals.forEach(el => observer.observe(el));
+<!-- Custom Cursor (Icons8 Tractor) -->
+<div class="custom-cursor">
+    <img src="https://img.icons8.com/color/48/tractor.png" alt="tractor-cursor" id="tractor-icon">
+    <div class="smoke-container"></div>
+</div>
+<div class="cursor-follower"></div>
 
-    // smooth scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            const href = this.getAttribute('href');
-            if (href === "#" || href === "") return;
-            const target = document.querySelector(href);
-            if (target) {
-                e.preventDefault();
-                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
-        });
-    });
-
-    // Add subtle parallax effect on hero background (visual only)
-    window.addEventListener('scroll', () => {
-        const hero = document.querySelector('.hero');
-        if (hero) {
-            const offset = window.pageYOffset;
-            hero.style.backgroundPositionY = offset * 0.3 + 'px';
-        }
-    });
-
-    // Função para carregar o vídeo somente ao clicar (Performance Máxima)
-    function playVideo(element, videoId) {
-        element.innerHTML = '<iframe width="100%" height="100%" src="https://www.youtube.com/embed/' + videoId + '?autoplay=1&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
-    }
-
-    // Função para carregar vídeos LOCAIS (.mp4) ao clicar
-    function playLocalVideo(element, videoUrl) {
-        element.innerHTML = '<video width="100%" height="100%" controls autoplay style="object-fit:cover;"><source src="' + videoUrl + '" type="video/mp4">Seu navegador não suporta a tag de vídeo.</video>';
-    }
-
-    console.log("Site AgroSolution atualizado com galeria de operações e segurança.");
-</script>
+<!-- GSAP & Animations -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script src="scripts.js?v=2"></script>
 </body>
 </html>
