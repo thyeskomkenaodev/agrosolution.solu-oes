@@ -6,11 +6,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const preloader = document.getElementById('preloader');
     const bar = document.querySelector('.preloader-bar');
     const logo = document.querySelector('.preloader-logo');
+    const tractorWrapper = document.querySelector('.preloader-tractor-wrapper');
     
     const tl = gsap.timeline();
 
     tl.to(logo, { opacity: 1, y: 0, duration: 1, ease: 'power4.out' })
       .to(bar, { width: '100%', duration: 1.5, ease: 'power2.inOut' }, "-=0.2")
+      .to(tractorWrapper, { left: '100%', duration: 1.5, ease: 'power2.inOut' }, "<")
       .to(preloader, { 
           yPercent: -100, 
           duration: 1, 
@@ -41,6 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 const angle = Math.atan2(diffY, diffX) * 180 / Math.PI;
                 const movementScale = Math.min(1 + Math.abs(diffX + diffY) / 100, 1.25);
+                const speed = Math.sqrt(diffX*diffX + diffY*diffY);
 
                 gsap.set(cursor, { 
                     x: mouseX, 
